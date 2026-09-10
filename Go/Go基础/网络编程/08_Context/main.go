@@ -11,6 +11,9 @@ var wg sync.WaitGroup
 
 func main() {
 	ctx := context.WithValue(context.Background(), "userId", "123")
+	cw, cancel := context.WithCancel(ctx)
+	cancel()
+	cw.Done()
 	ctx2 := context.WithValue(ctx, "uuid", "2345")
 	wg.Add(1)
 	go performTask1(ctx)
