@@ -11,6 +11,7 @@ func main() {
 	defer cancel()
 
 	stop := context.AfterFunc(ctx, func() { fmt.Println("After Func is running") })
+	
 	go func(ctx context.Context, stop func() bool) {
 		select {
 		case <-ctx.Done():
